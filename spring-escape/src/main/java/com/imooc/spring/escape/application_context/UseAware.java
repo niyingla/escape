@@ -11,12 +11,9 @@ import org.springframework.stereotype.Component;
 public class UseAware implements ApplicationContextAware {
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext)
-            throws BeansException {
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         assert ApplicationContextStore.getApplicationContext() == null;
-        ApplicationContextStore.setApplicationContext(
-                applicationContext
-        );
+        ApplicationContextStore.setApplicationContext(applicationContext);
         assert ApplicationContextStore.getApplicationContext() != null;
         log.info("UseAware Done.");
     }

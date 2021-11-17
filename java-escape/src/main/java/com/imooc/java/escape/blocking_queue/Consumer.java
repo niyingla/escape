@@ -4,7 +4,7 @@ import java.util.concurrent.BlockingQueue;
 
 /**
  * <h1>消费者</h1>
- * */
+ */
 public class Consumer implements Runnable {
 
     private final BlockingQueue<Integer> blockingQueue;

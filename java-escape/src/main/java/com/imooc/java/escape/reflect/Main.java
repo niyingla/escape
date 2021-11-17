@@ -29,29 +29,33 @@ public class Main {
 //        Method method = clz.getDeclaredMethod("boss", String.class);
 //        Method method = clz.getDeclaredMethod("worker", String.class);
 
-        Method superMethod = getMethod(clz, "worker",
-                new Class[]{String.class});
+        Method superMethod = getMethod(clz, "worker", new Class[]{String.class});
         if (superMethod != null) {
             System.out.println(superMethod.invoke(clz.newInstance(), "boss"));
         }
     }
 
-    private static Method getMethod(Class<?> target, String methodName,
-                                    Class<?>[] argTypes) {
-
+    /**
+     * 获取类的对应方法
+     * @param target
+     * @param methodName
+     * @param argTypes
+     * @return
+     */
+    private static Method getMethod(Class<?> target, String methodName, Class<?>[] argTypes) {
         Method method = null;
-
         try {
+            //获取当前类的方法
             method = target.getDeclaredMethod(methodName, argTypes);
             method.setAccessible(true);
         } catch (NoSuchMethodException ex) {
-            System.out.println("can not get method: " + methodName + " from "
-                    + target.getName());
+            System.out.println("can not get method: " + methodName + " from " + target.getName());
         }
+        //未获取到方法 并且 当前对象不是Object
         if (method == null && target != Object.class) {
+            //继续往下走
             return getMethod(target.getSuperclass(), methodName, argTypes);
         }
-
         return method;
     }
 

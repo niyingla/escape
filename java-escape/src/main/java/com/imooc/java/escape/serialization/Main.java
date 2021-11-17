@@ -8,13 +8,13 @@ import java.io.ObjectOutputStream;
 
 /**
  * <h1>序列化和反序列化</h1>
- * */
+ */
 @SuppressWarnings("all")
 public class Main {
 
     /**
      * <h1>序列化和反序列化 People 对象</h1>
-     * */
+     */
     private static void testSerializablePeople() throws Exception {
 
         // 序列化的步骤
@@ -24,9 +24,7 @@ public class Main {
         People p = new People(10L);
 
         // 创建一个输出流
-        ObjectOutputStream oos = new ObjectOutputStream(
-                new FileOutputStream(file)
-        );
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
         // 输出可序列化对象
         oos.writeObject(p);
         // 关闭输出流
@@ -35,9 +33,7 @@ public class Main {
         // 反序列化的步骤
 
         // 创建一个输入流
-        ObjectInputStream ois = new ObjectInputStream(
-                new FileInputStream(file)
-        );
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
         // 得到反序列化的对象
         Object newPerson = ois.readObject();
         // 关闭输入流
@@ -48,16 +44,14 @@ public class Main {
 
     /**
      * <h2>子类实现序列化, 父类不实现序列化</h2>
-     * */
+     */
     private static void testSerizableWorker() throws Exception {
 
         File file = new File("/tmp/worker_10.java_");
         Worker p = new Worker(10L, "qinyi", 19);
 
         // 创建一个输出流
-        ObjectOutputStream oos = new ObjectOutputStream(
-                new FileOutputStream(file)
-        );
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
         // 输出可序列化对象
         oos.writeObject(p);
         // 关闭输出流
@@ -75,9 +69,7 @@ public class Main {
         Combo p = new Combo(1, new People(10L));
 
         // 创建一个输出流
-        ObjectOutputStream oos = new ObjectOutputStream(
-                new FileOutputStream(file)
-        );
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
         // 输出可序列化对象
         oos.writeObject(p);
         // 关闭输出流
@@ -91,7 +83,8 @@ public class Main {
 
     /**
      * <h2>同一个对象多次序列化的问题, 坑</h2>
-     * */
+     * 只有在第一次序列化时才会序列化成字节输出
+     */
     private static void sameObjectRepeatedSerialization() throws Exception {
 
         File file = new File("/tmp/peopele_more.java_");
@@ -118,11 +111,11 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-//        testSerializablePeople();
+        testSerializablePeople();
 
-//        testSerizableWorker();
+        testSerizableWorker();
 
-//        testSerializableCombo();
+        testSerializableCombo();
 
         sameObjectRepeatedSerialization();
     }

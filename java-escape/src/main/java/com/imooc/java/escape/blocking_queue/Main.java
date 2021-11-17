@@ -10,9 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        BlockingQueue<Integer> blockingQueue = new ArrayBlockingQueue<>(
-                3, true
-        );
+        BlockingQueue<Integer> blockingQueue = new ArrayBlockingQueue<>(3, true);
 
         Producer producer = new Producer(blockingQueue);
         Consumer consumer = new Consumer(blockingQueue);

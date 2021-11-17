@@ -34,8 +34,7 @@ public class NumberAndTime {
 
 //        System.out.println(new BigDecimal(30).divide(new BigDecimal(7)));
         System.out.println(
-                new BigDecimal(30).divide(new BigDecimal(7), 2,
-                        BigDecimal.ROUND_HALF_UP)
+                new BigDecimal(30).divide(new BigDecimal(7), 2, BigDecimal.ROUND_HALF_UP)
         );
     }
 

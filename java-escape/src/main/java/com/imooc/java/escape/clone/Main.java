@@ -2,7 +2,7 @@ package com.imooc.java.escape.clone;
 
 /**
  * <h1>理解深拷贝和浅拷贝</h1>
- * */
+ */
 @SuppressWarnings("all")
 public class Main {
 
@@ -13,10 +13,7 @@ public class Main {
     }
 
     private static void copyTest() {
-
-        Worker worker1 = new Worker(
-                "qinyi", 19, "m", "大连理工大学", "2000"
-        );
+        Worker worker1 = new Worker("qinyi", 19, "m", "大连理工大学", "2000");
         System.out.println("原始对象: " + worker1.getEducationInfo().getSchool());
 
         Worker worker2 = (Worker) worker1.clone();

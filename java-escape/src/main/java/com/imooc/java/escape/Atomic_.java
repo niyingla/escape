@@ -84,6 +84,6 @@ public class Atomic_ {
 
         accumulator(20000);
 
-//        atomicAccumulator(10000);
+        atomicAccumulator(10000);
     }
 }
